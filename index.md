@@ -30,3 +30,5 @@ My email address is [johanna.mannisto@helsinki.fi](mailto:johanna.mannisto@helsi
 
 ## Projects
 [Text Classification](https://github.com/jmannisto/Scientific-Text-Classification-with-arXiv)
+
+Check out my CV [here](/assets/CV_JMannisto.pdf)
