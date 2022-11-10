@@ -33,9 +33,14 @@ I had used command line infrequently in the past before taking this course and w
 
 In week 2, we recovered some of the commands introduced in week 1, such as `mkdir`, while also practicing new commands like `mv` and learning key symbols such as \* and ?.
 
-We also learned about the file system,
+We also learned about the file system, the scp and ssh and practiced logging into Puhti - a supercomputer.
 
-### Reflection:
+An example of how the command for `scp` is formatted to copy a file from your local computer to a server is below.
+
+``` bash
+  scp username@server: /home/username/examplefile username@server: /home/username/filepath/
+```
+The reminders that SCP can only be done from your own computer, you can't be logged into the server came in handy a few weeks ago when I was trying to download a file from the server onto my computer. After a few errors, I remembered how I should be using SSH to grab the file but not actually have signed in using SSH!
 
 ## Week 3: Basic Corpus Processing
 
@@ -51,7 +56,7 @@ In week 3 we learned about:
 
 All of these were learned within the context of corpus processing. The assignment this week required some of the following sorts of commands:
 
-```{bash}
+```bash
   wget https://www.gutenberg.org/cache/epub/4511/pg4511.txt #get file from project gutenberg
   mv pg4511.txt life_of_bee.txt #rename file
   cat life_of_bee.txt | grep -E "\bpre(\w|-)*ed\b" | wc -l
@@ -59,7 +64,7 @@ All of these were learned within the context of corpus processing. The assignmen
 
 Above, we see various command line commands used in the exercise in Week 3. Much like in Week 1, we use `wget` to retrieve a book from Project Gutenberg and then rename it. One of the exercises was to use regular expressions to find the wordcount of words that begin with the string 'pre' and end with the string 'ed'. Above you can see the regular expression used where a word boundary was identified with `\b` followed by the initial string we're looking for. Between the 'pre' and 'ed' could be any number of other characters or hyphens indicated by `(\w|-)*`. Finally we end with the expected end string 'ed' and the final word boundary. This is then piped to the command `wc` so all what shows up on the terminal is the word count within the text that fits the conditions established by the regular expression. 
 
-```{bash}
+``` bash
   #create word list
   cat life_of_bee.txt | tr -s "[:space:][:punct:]" "\n" | sort | uniq -i > bee_word_list.txt
 ```
@@ -70,24 +75,43 @@ Learning how to use streams turned out to be quite useful in tasks in this cours
 
 ## Week 4: Advanced Corpus Processing
 
-In week 4, we continued working on corpus processing skills. Namely, we focused on the following items: - `sed`: the stream editor
+In week 4, we continued working on corpus processing skills. Namely, we focused on the following items: - `sed`: the stream editor. `sed` can be used to replace patterns but also can be used to find patterns, like `egrep`.
 
-CONTINUE 
+``` bash
+  sed -nE '/that [a-z]+d[ \.,?:!$]/p' ulysses.txt  
+```
 
-To be frank, it took me quite a while to feel comfortable using `sed`. Notably, it was difficult to remember that `sed`'s default behavior is to capture the first occurrence rather than all of them.
+For instance, in the code block above, we can see `sed` being used to locate a pattern "that ...d" in the file *ulysses.txt*. The capital e, `-E` is a flag for regular expressions, which is what we write out to indicate which pattern we're searching for. The flag `-n` suppresses the typical behavior of `sed` to echo each line to the standard output after reading through it.
+
+To be frank, it took me quite a while to feel comfortable using `sed`. Notably, it was difficult to remember that `sed`'s default behavior is to capture the first occurrence rather than all of them. 
 
 ## Week 5: Scripting & Configuration Files
 
-Week 5 was when we were introduced to bash script.
+Week 5 was when we were introduced to bash script and practiced scripting files.
 
 Some variable names we learned included:
 
-| Variable |       Description        |
-|:--------:|:------------------------:|
-|   \$0    |   name of bash script    |
-|  \$1-9   | first 9 arguments passed |
+| Variable |                 Description                  |
+|:--------:|:--------------------------------------------:|
+|   \$0    |             name of bash script              |
+|  \$1-9   |           first 9 arguments passed           |
+| \$RANDOM |           returns a random number            |
+|   \$?    | exit status of the most recently run process |
 
-### Reflection:
+We practiced creating several small bash scripts to get the hang of it.
+
+![Drafted bash script mydiff.sh](/assets/img/mydiff.sh_image.png){width="338"}
+
+In the image above, we see a bash script which simply repurposes the `diff` command for a slightly more complicated script which takes two files in (stored as variables 1 and 2). If they are equal the script should print out a 0, if they aren't equal it should print out a 1. Conveniently, these are the values of the exit status of diff (stored in the variable \$?) and so we can simply use `echo` to print out the variables we want.
+
+This could also have been written as in the code block below, however I had wanted to practice my if statements, using the `if … fi` construction.
+
+``` bash
+diff $1 $2 >/dev/null
+echo $?
+```
+
+As I go deeper and deeper into my education for language technology, I see huge benefits in being able to draft your own scripts to run regular programs or pipelines to help with processing data. Especially if a task is rote and you don't expect any particular surprises.
 
 ## Week 6: Installing and Running Programs
 
@@ -104,4 +128,3 @@ This will be very useful to use when I want to activate a virtual environment wi
 
 ## Week 7: Jekyll & Github Pages
 
-### Reflection:
