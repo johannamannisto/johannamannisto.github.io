@@ -1,7 +1,5 @@
 # Command Line Tools for Linguists Course
 
-## Intro
-
 This course was about the command-line environment, specifically focusing on command line tools that linguistics would find helpful. This includes executing a variety of tasks involved with data processing, corpus work, and more.
 
 Overarching goals of this course included:
@@ -15,9 +13,9 @@ Overarching goals of this course included:
 
 ## Week 1: Introduction
 
-The first week of the course was focused on introducing us to the command line and getting everything set up on our computers. Here we covered some basic commands such as `cd`, `mkdir`, and `rm`. We also learned escape commands such as`ctrl-c`. In addition to these basic commands to get us comfortable with Terminal/Command line, we briefly went over the history of Linux.
+The first week of the course was focused on introducing us to the command line and getting everything set up on our computers. Here we covered some basic commands such as `cd`, `mkdir`, and `rm`. We also learned escape commands such as `ctrl-c`. In addition to these basic commands to get us comfortable, we briefly went over the history of Linux.
 
-Our exercise for this week included using `wget` and emacs to get us introduced to concepts needed later for corpus processing. Below is a snippet of code that was called in the command line for this exercise
+Our exercise for this week included using `wget` and emacs. This introduced us to concepts needed later for corpus processing. Below is a snippet of code that was called in the command line for this exercise:
 
 ``` bash
   wget https://www.gutenberg.org/files/215/215-0.txt 
@@ -31,7 +29,7 @@ I had used command line infrequently in the past before taking this course and w
 
 ## Week 2: Navigating a UNIX System
 
-In week 2, we recovered some of the commands introduced in week 1, such as `mkdir`, while also practicing new commands like `mv` and learning key symbols such as \* and ?.
+In week 2, we went over some of the commands introduced in week 1, such as `mkdir`, while also practicing new commands like `mv` and learning key symbols such as \* and ?.
 
 We also learned about the file system, the scp and ssh and practiced logging into Puhti - a supercomputer.
 
@@ -40,7 +38,7 @@ An example of how the command for `scp` is formatted to copy a file from your lo
 ``` bash
   scp username@server: /home/username/examplefile username@server: /home/username/filepath/
 ```
-The reminders that SCP can only be done from your own computer, you can't be logged into the server came in handy a few weeks ago when I was trying to download a file from the server onto my computer. After a few errors, I remembered how I should be using SSH to grab the file but not actually have signed in using SSH!
+The reminders that SCP can only be done from your own computer, you can't be logged into the server came in handy a few weeks ago when I was trying to download a file from the server onto my computer. After a few errors, I remembered how I should be using SSH to grab the file but not actually have signed into the server using SSH! I appreciated being able to get comfortable remoting into a server through this course. Since then I've used it several times in many other classes. 
 
 ## Week 3: Basic Corpus Processing
 
@@ -69,13 +67,13 @@ Above, we see various command line commands used in the exercise in Week 3. Much
   cat life_of_bee.txt | tr -s "[:space:][:punct:]" "\n" | sort | uniq -i > bee_word_list.txt
 ```
 
-Another task was to create a word list. First we read the text using `cat`, pipe this into the `tr` command using the pipe `|`. We transform characters like spaces and punctuation into new lines, but avoid empty new lines, as seen by using `tr -s`. This brings all new words on a new line for our list of words. We use the `uniq` command to remove duplicate lines, the results of these get redirected to a new file *bee_word_list.txt* with the `>`.
+Another task was to create a word list. First we read the text using `cat`, pipe this into the `tr` command using the pipe `|`. We transform characters like spaces and punctuation into new lines, but avoid empty new lines, as seen by using `tr -s`. This brings all new words on a new line for our list of words. We use the `uniq` command to remove duplicate lines, the results of these get redirected to a new file *bee_word_list.txt* with the `>` symbol.
 
-Learning how to use streams turned out to be quite useful in tasks in this course that came later. Being able to redirect output into new files or append to the ends of files was very useful in Week 4 as we continued to do corpus processing. Similarly, being able to use pipes to redirect data from one command to another is incredibly useful. This meant I could accomplish several commands in the same line at once in the terminal.I see using pipes and stream redirects as commands I use on a regular basis as I continue to use the terminal.
+Learning how to use streams turned out to be quite useful in later tasks for this course. Being able to redirect output into new files or append to the ends of files was very useful in Week 4 as we continued to do corpus processing. Similarly, being able to use pipes to redirect data from one command to another is incredibly useful. This meant I could accomplish several commands in the same line at once in the terminal without needing to direct outputs to file after file. I see using pipes and stream redirects as commands I use on a regular basis as I continue to use the command line. 
 
 ## Week 4: Advanced Corpus Processing
 
-In week 4, we continued working on corpus processing skills. Namely, we focused on the following items: - `sed`: the stream editor. `sed` can be used to replace patterns but also can be used to find patterns, like `egrep`.
+In week 4, we continued working on corpus processing skills. Namely, we focused on `sed`: the stream editor. `sed` can be used to replace patterns but also can be used to find patterns, like `egrep`.
 
 ``` bash
   sed -nE '/that [a-z]+d[ \.,?:!$]/p' ulysses.txt  
@@ -100,7 +98,7 @@ Some variable names we learned included:
 
 We practiced creating several small bash scripts to get the hang of it.
 
-![Drafted bash script mydiff.sh](/assets/img/mydiff.sh_image.png){width="338"}
+![Drafted bash script mydiff.sh](/assets/img/mydiff.sh_image.png)
 
 In the image above, we see a bash script which simply repurposes the `diff` command for a slightly more complicated script which takes two files in (stored as variables 1 and 2). If they are equal the script should print out a 0, if they aren't equal it should print out a 1. Conveniently, these are the values of the exit status of diff (stored in the variable \$?) and so we can simply use `echo` to print out the variables we want.
 
@@ -124,7 +122,7 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-This will be very useful to use when I want to activate a virtual environment within terminal. I had also never encountered the `make` command before or Makefiles.
+This will be very useful to use when I want to activate a virtual environment within terminal. I had also never encountered the `make` command before or Makefiles. I primarily use Anaconda Navigator these days and set up virtual environments outside of the terminal, however I now have more experience using pip as well as creating adn activating virtual environments through the terminal rather than going through another app.
 
 ## Week 7: Jekyll & Github Pages
 
