@@ -30,5 +30,9 @@ My email address is [johanna.mannisto@helsinki.fi](mailto:johanna.mannisto@helsi
 
 ## Projects
 [Text Classification](https://github.com/jmannisto/Scientific-Text-Classification-with-arXiv)
+This was a final project for the Introduction to Data Science course I took at the University of Helsinki. There we used data from ArXiv to create a classifier model based on text from the abstracts of the papers stored in ArXiv. 
+
+[Command Line Github Project](https://github.com/johannamannisto/johannamannisto.github.io)
+This was the final project for the Command Line for Linguistics course at the University of Helsinki. This Github Page is the result of that project! 
 
 Check out my CV [here](/assets/CV_JMannisto.pdf)
