@@ -8,7 +8,7 @@ My name is Johanna and I'm a Masters student at the University of Helsinki study
 
 ## Find me on
 
-[LinkedIn](https://fi.linkedin.com/jmannisto), [GitHub](https://github.com/johannamannisto)
+[LinkedIn](www.linkedin.com/in/jmannisto), [GitHub](https://github.com/johannamannisto)
 
 ## Contact
 
